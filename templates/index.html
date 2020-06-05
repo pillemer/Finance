@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+<table class="table table-striped text-left">
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Name</th>
+                <th>Shares</th>
+                <th>Price</th>
+                <th>TOTAL</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <td colspan="4"></td>
+                <td class="font-weight-bold">{{ tot_sum }}</td>
+            </tr>
+        </tfoot>
+        <tbody>
+            {% for item in folio %}
+                <tr>
+                    {% set s, n, sh, p ,t = item %}
+                    <td>{{ s }}</td>
+                    <td>{{ n }}</td>
+                    <td>{{ sh }}</td>
+                    <td>{{ p }}</td>
+                    <td>{{ t }}</td>
+                </tr>
+            {% endfor %}
+            <tr>
+                <td>CASH</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>{{ cash }}</td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}
